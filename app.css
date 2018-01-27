@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.row {
+    margin: 0px;
+}
+
+.header {
+    background: #eea236;
+    padding: 10px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.productHeader {
+    background: #46b8da;
+}
+
+.topmargin20 {
+    margin-top: 20px;
+}
+
+.panelWrapper {
+    border: 1px solid #eea236;
+    padding: 0px;
+    text-align: center;
+    height: 700px;
+}
+
+.productPanel {
+    border: 1px solid #46b8da;
+}
+
+.productDetailBox {
+    width: 80%;
+    margin: 20px 90px;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #46b8da;
+    border-radius: 3px;
+    background: rgba(70, 184, 218, 0.47);
+}
+
+.productDetailBox:hover {
+    cursor: move;
+}
+
+.comboItem {
+    margin: 10px 0px;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #ccc;
+}
+
+.comboWrapper {
+    padding: 5px;
+    margin: 10px;
+    border: 2px dashed #eea236;
+    border-radius: 3px;
+    background: rgba(238, 162, 54, 0.47);
+}
+
+[ng-drag].drag-over {
+    border: solid 1px red;
+}
+
+[ng-drag].dragging {
+    opacity: 0.5;
+}
+
+[ng-drop].drag-enter {
+    border: solid 5px red;
+}
+
+[ng-drop] span.title {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 20px;
+    margin-left: -100px;
+    margin-top: -10px;
+}
+
+[ng-drop] div {
+    position: relative;
+    z-index: 2;
+}
+
+a {
+    position: absolute;
+    top: 17px;
+    right: 10px;
+}
+
+a.sort-by:before,
+a.sort-by:after {
+    border: 6px solid transparent;
+    content: "";
+    display: block;
+    height: 0;
+    right: 5px;
+    top: 50%;
+    position: absolute;
+    width: 0;
+}
+
+a.sort-by:before {
+    border-bottom-color: #666;
+    margin-top: -13px;
+}
+
+a.sort-by:after {
+    border-top-color: #666;
+    margin-top: 1px;
+}

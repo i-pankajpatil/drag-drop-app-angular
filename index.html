@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title ng-bind="Drag-Drop App - Angular"></title>
+
+    <!-- start of css -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="app.css" rel="stylesheet" type="text/css" />
+    <!-- end of css -->
+</head>
+
+<body ng-app="productsApp" ng-cloak>
+    <div ng-controller="productController">
+        <div class="row">
+            <div class="col-md-12">
+                <div ng-drop="true" ng-drop-success="onDropComplete($data,$event)" class="col-md-6 panelWrapper">
+                    <div class="header">OFFER PANEL</div>
+                    <div ng-if="offerProductList.length" class="comboWrapper">
+                        <div class="row">
+                            <div class="col-md-3" ng-repeat="offerProduct in offerProductList">
+                                <div class="comboItem">
+                                    <div>
+                                        Image
+                                    </div>
+                                    <div>
+                                        {{offerProduct.name}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="grossDetailDiv">
+                                <b> Rs.{{totalComboPrice}} &nbsp&nbsp&nbsp&nbsp&nbsp 10% Off &nbsp&nbsp&nbsp&nbsp&nbsp Rs.{{totalComboPrice - (totalComboPrice * 10 / 100)}}</b>
+                            </div>
+                        </div>
+                    </div><br>
+                    <button ng-if="offerProductList.length" type="button" class="btn btn-warning" data-toggle="modal" data-target="#productModal">Create Combo Offer</button>
+                </div>
+                <div class="col-md-6 panelWrapper productPanel">
+                    <div class="header productHeader">PRODUCTS
+                        <a href="#" class="sort-by" ng-click="sortProducts()"></a>
+                    </div>
+                    <div ng-repeat="product in prodList | orderBy : sortParam">
+                        <div ng-drag="true" ng-drag-data="product" class="col-md-12 productDetailBox">
+                            <div class="col-md-4">
+                                <div class="col-md-12">Image</div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-6">{{product.name}}</div>
+                                    <div class="col-md-6">Rs.{{product.price}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">{{product.desc}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-info topmargin20" data-toggle="modal" data-target="#productModal">Add Product</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="productModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Add New Product</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" ng-model="productName" class="form-control" id="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price:</label>
+                            <input type="number" ng-model="productPrice" class="form-control" id="price">
+                        </div>
+                        <div class="form-group">
+                            <label for="desc">Description:</label>
+                            <input type="text" ng-model="productDesc" class="form-control" id="desc">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" ng-click="addNewProduct()">Add</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- start of scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="components/ngDraggable.js"></script>
+    <script src="app.js"></script>
+    <script src="productController.js"></script>
+    <!-- end of scripts -->
+</body>
+
+</html>
